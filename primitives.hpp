@@ -1,5 +1,5 @@
-#ifndef SHAPES
-#define SHAPES
+#ifndef PRIMTIVES
+#define PRIMTIVES
 
 #include "point.hpp"
 #include "svg.hpp"
