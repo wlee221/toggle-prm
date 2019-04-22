@@ -1,8 +1,8 @@
 #ifndef HOLONOMIC_2D_PLANNING
 #define HOLONOMIC_2D_PLANNING
 
-#include "point.hpp"
-#include "primitives.hpp"
+#include "classes/point.hpp"
+#include "classes/shapes.hpp"
 #include "holonomic_2d_scenario.hpp"
 #include <vector>
 #include <string>

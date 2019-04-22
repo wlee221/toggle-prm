@@ -1,8 +1,8 @@
 #ifndef HOLONOMIC_2D_SCENARIO
 #define HOLONOMIC_2D_SCENARIO
 
-#include "point.hpp"
-#include "primitives.hpp"
+#include "classes/point.hpp"
+#include "classes/shapes.hpp"
 #include <vector>
 
 using namespace std;
