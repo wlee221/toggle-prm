@@ -9,7 +9,7 @@
 template <class Scenario>
 class PRM {
 public:
-    PRM(Scenario s, int n, int k, Point start, Point goal) 
+    PRM(Scenario s, int n, int k, std::optional<int> m_opt, Point start, Point goal) 
         : s_(s), n_(n), k_(k), sampler_(s.bounds()), start_(start), goal_(goal)
     {
         // add start and goal states 

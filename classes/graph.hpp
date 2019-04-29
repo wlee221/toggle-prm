@@ -28,6 +28,10 @@ public:
         cc_[j] = cc_[i]; // TODO: avoid copy assignment here. (perhaps using unique_ptr)
     }
 
+    int size() {
+        return vertex_.size();
+    }
+
     float penalized_dist(int i, int j) {
         float dist = dist_squared(vertex_[i], vertex_[j]);
         if (!cc_[i].count(j) > 0)
@@ -60,16 +64,21 @@ public:
         return arr;
     }
     template <typename Scenario>
-    void connect(int k, const Scenario &s) {
+    std::vector<Point> connect(int k, const Scenario &s, bool toggle = false) {
+        // last two parameters are only applicable for TogglePRM. So use optional parameters.
+        std::vector<Point> witness;
         for (int i = 0; i < vertex_.size(); ++i) {
             std::vector<int> candidates = knearest(k, i);
             for (const auto &j : candidates) {
                 Point from = vertex_[i];
                 Point to = vertex_[j];
-                if (s.link(from, to))
+                if (s.link(from, to, witness, toggle)) {
                     add_edge(i, j);
+                }
             }
         }
+
+        return witness;
     }
 
     // debug function 
@@ -81,24 +90,25 @@ public:
         std::cout << "]\n";
     }
 
-    void draw_path(std::ostream &strm) {
-        auto solution_path = shortest_path();
-        if (!solution_path.has_value()) {
-            std::cerr << "No solution was found." << endl;
-            return;
-        }
+    void draw_path(std::ostream &strm, bool draw_solution = true) {
         for(int i = 0; i < vertex_.size(); ++i) {
             std::set<int> set = edges_[i];
             for (const auto &j : set) {
-                svg::addEdge(strm, vertex_[i].x(), vertex_[i].y(), vertex_[j].x(), vertex_[j].y(), 1.0);
+                svg::addEdge(strm, vertex_[i].x(), vertex_[i].y(), vertex_[j].x(), vertex_[j].y(), 0.5);
             }
         }
-
-        std::vector<int> path = solution_path.value();
-        int u = 1;
-        while (path[u] != -1) {
-            svg::addSolutionEdge(strm, vertex_[u].x(), vertex_[u].y(), vertex_[path[u]].x(), vertex_[path[u]].y(), 2.0);
-            u = path[u];
+        if (draw_solution) {
+            auto solution_path = shortest_path();
+            if (!solution_path.has_value()) {
+                std::cerr << "No solution was found." << endl;
+                return;
+            }
+            std::vector<int> path = solution_path.value();
+            int u = 1;
+            while (path[u] != -1) {
+                svg::addSolutionEdge(strm, vertex_[u].x(), vertex_[u].y(), vertex_[path[u]].x(), vertex_[path[u]].y(), 2.0);
+                u = path[u];
+            }
         }
     }
 

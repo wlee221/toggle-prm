@@ -7,7 +7,7 @@
 class UniformSampler {
 public:
     UniformSampler(int x_min, int x_max, int y_min, int y_max) 
-        : rng_x_(rd_()), uni_x_(x_min, x_max), rng_y_(rd_()), uni_y_(y_min, y_max)
+        : rng_x_(rd_()), uni_x_(x_min, x_max - 1), rng_y_(rd_()), uni_y_(y_min, y_max - 1)
     {
     }
     
