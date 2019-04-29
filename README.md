@@ -33,7 +33,7 @@ Executable takes the following flags:
 For example, 
 ```
 g++ holonomic_2d_planning.cpp -std=c++17 -o holonomic_2d_planning 
-./holonomic_2d_planning -f test_data/redblue_200.txt -n 20 -k 5 -m 40 -N 100
+./holonomic_2d_planning -f test_data/narrow -n 20 -k 5 -m 40 -N 100
 ```
 compiles with g++ and runs `holonomic_2d_planning.cpp` on input `test_data/narrow` with parameters `n = 20`, `k = 5`, `m = 40` 100 times.
 
