@@ -41,6 +41,33 @@ namespace svg {
     inline void endSVG(std::ostream &strm) {
         closeTag(strm, "svg");
     }
+
+    inline void addEdge(std::ostream &strm, float x1, float y1, float x2, float y2, float width) {
+        addTabs(strm, 1);
+        startTag(strm, "line");
+        addAttr(strm, "x1", x1);
+        addAttr(strm, "y1", y1);
+        addAttr(strm, "x2", x2);
+        addAttr(strm, "y2", y2);
+        addAttr(strm, "stroke", "rgb(125, 125, 125)");
+        addAttr(strm, "stroke-width", width);
+        addAttr(strm, "stroke-linecap", "round");
+        closeTag(strm);
+    }
+
+    inline void addSolutionEdge(std::ostream &strm, float x1, float y1, float x2, float y2, float width) {
+        addTabs(strm, 1);
+        startTag(strm, "line");
+        addAttr(strm, "x1", x1);
+        addAttr(strm, "y1", y1);
+        addAttr(strm, "x2", x2);
+        addAttr(strm, "y2", y2);
+        addAttr(strm, "stroke", "rgb(255, 0, 0)");
+        addAttr(strm, "stroke-width", width);
+        addAttr(strm, "stroke-linecap", "round");
+        closeTag(strm);
+    }
+
 } 
 
 #endif

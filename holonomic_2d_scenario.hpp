@@ -24,7 +24,7 @@ public:
         return true;
     }
 
-    bool link(const Point &a, const Point &b, bool toggle = false) {
+    bool link(const Point &a, const Point &b, bool toggle = false) const {
         for (const auto &c : circles_)
             if (!c.link(a, b))
                 return false;
@@ -32,6 +32,10 @@ public:
             if (!r.link(a, b))
                 return false;
         return true;
+    }
+
+    std::pair<Point, Point> bounds() const {
+        return make_pair(Point(0, 0), Point(width_, height_));
     }
 
 private:

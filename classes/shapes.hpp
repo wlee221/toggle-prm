@@ -7,7 +7,7 @@
 
 using namespace std;
 
-constexpr float TOL = 1e-2; // tolerance used in bisection methods.
+constexpr float TOL = 1.0; // tolerance used in bisection methods.
 
 class Rect {
 public:

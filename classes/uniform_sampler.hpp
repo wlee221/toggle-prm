@@ -6,8 +6,13 @@
 
 class UniformSampler {
 public:
-    UniformSampler(int width, int height) 
-        : rng_x_(rd_()), uni_x_(0, width), rng_y_(rd_()), uni_y_(0, height)
+    UniformSampler(int x_min, int x_max, int y_min, int y_max) 
+        : rng_x_(rd_()), uni_x_(x_min, x_max), rng_y_(rd_()), uni_y_(y_min, y_max)
+    {
+    }
+    
+    UniformSampler(std::pair<Point, Point> bounds)
+        : UniformSampler(bounds.first.x(), bounds.second.x(), bounds.first.y(), bounds.second.y())
     {
     }
 
