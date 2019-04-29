@@ -17,11 +17,11 @@ This repository is divided into following directories:
     * prob.cfg contains start and goal state coordinates.
 
 ### Compilation and Execution
-##### Compilation
+#### Compilation
 C++17 Compiler is required to compile the source files. For most commercial compilers, you need to add `-std=c++17` flag.  
   
 
-##### Execution 
+#### Execution 
 Executable takes the following flags: 
 * `f`: prefix of the input file. (e.g. test_data/narrow_05).
 * `n`: number of configurations sampled each iteration.
@@ -29,7 +29,7 @@ Executable takes the following flags:
 * `m`: maximum number of witness points each iteration.
 * `N`: number of times to run the algorithm (intended for benchmarking purposes)
 
-##### Example
+#### Example
 For example, 
 ```
 g++ holonomic_2d_planning.cpp -std=c++17 -o holonomic_2d_planning 
