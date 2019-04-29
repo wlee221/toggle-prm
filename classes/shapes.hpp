@@ -14,7 +14,7 @@ public:
     Rect(Point p0, Point p1)
         : p0_(p0), p1_(p1)
     {
-        if (!(p0.x() < p1.x() && p0.y() < p0.y()))
+        if (!(p0.x() < p1.x() && p0.y() < p1.y()))
             cerr << "ERROR (Rect initialization): p0 and p1 must be top left and bottom right corner of rect." << endl;
     } 
 
